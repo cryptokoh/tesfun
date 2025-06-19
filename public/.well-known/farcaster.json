@@ -1,0 +1,26 @@
+{
+  "frame": {
+    "version": "1",
+    "name": "Fun Tes",
+    "iconUrl": "https://tesfun.netlify.app/icon.png",
+    "homeUrl": "https://tesfun.netlify.app",
+    "imageUrl": "https://tesfun.netlify.app/api/opengraph-image",
+    "buttonTitle": "FunT",
+    "splashImageUrl": "https://tesfun.netlify.app/splash.png",
+    "splashBackgroundColor": "#f7f7f7",
+    "webhookUrl": "https://tesfun.netlify.app/api/webhook",
+    "subtitle": "A fun test app",
+    "description": "A fun test app for Farcaster mini apps",
+    "primaryCategory": "utility",
+    "tags": [
+      "fun",
+      "test",
+      "demo"
+    ],
+    "heroImageUrl": "https://tesfun.netlify.app/og.png",
+    "tagline": "A fun test app",
+    "ogTitle": "Fun Tes",
+    "ogDescription": "A fun test app for Farcaster mini apps",
+    "ogImageUrl": "https://tesfun.netlify.app/og.png"
+  }
+} 
