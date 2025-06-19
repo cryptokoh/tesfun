@@ -6,9 +6,9 @@ import { execSync } from 'child_process';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = __dirname;
 
-// Configuration for funtes.netlify.app
+// Configuration for tesfun.netlify.app
 const config = {
-  domain: 'funtes.netlify.app',
+  domain: 'tesfun.netlify.app',
   name: 'Fun Tes',
   description: 'A fun test app',
   buttonText: 'FunT',
@@ -70,13 +70,13 @@ newEnvVars.forEach(varLine => {
 // Write updated .env file
 fs.writeFileSync(envPath, envContent);
 
-console.log('✅ Environment variables updated for funtes.netlify.app');
+console.log('✅ Environment variables updated for tesfun.netlify.app');
 
 // Update the manifest file
 const manifestPath = path.join(projectRoot, 'public', '.well-known', 'farcaster.json');
 fs.writeFileSync(manifestPath, JSON.stringify(metadata, null, 2));
 
-console.log('✅ Manifest updated for funtes.netlify.app');
+console.log('✅ Manifest updated for tesfun.netlify.app');
 
 // Run next build
 console.log('\nBuilding Next.js application...');
@@ -88,6 +88,6 @@ execSync(`"${nextBin}" build`, {
 });
 
 console.log('\n✨ Build complete! Your mini app is ready for deployment to Netlify. 🪐');
-console.log('🔗 Domain: https://funtes.netlify.app');
+console.log('🔗 Domain: https://tesfun.netlify.app');
 console.log('📱 App Name:', config.name);
 console.log('🔘 Button Text:', config.buttonText); 
