@@ -2,25 +2,27 @@
   "frame": {
     "version": "1",
     "name": "Fun Tes",
-    "iconUrl": "https://tesfun.netlify.app/icon.png",
-    "homeUrl": "https://tesfun.netlify.app",
-    "imageUrl": "https://tesfun.netlify.app/api/opengraph-image",
+    "iconUrl": "https://funtes.netlify.app/icon.png",
+    "homeUrl": "https://funtes.netlify.app",
+    "imageUrl": "https://funtes.netlify.app/api/opengraph-image",
     "buttonTitle": "FunT",
-    "splashImageUrl": "https://tesfun.netlify.app/splash.png",
+    "splashImageUrl": "https://funtes.netlify.app/splash.png",
     "splashBackgroundColor": "#f7f7f7",
-    "webhookUrl": "https://tesfun.netlify.app/api/webhook",
-    "subtitle": "A fun test app",
-    "description": "A fun test app",
-    "primaryCategory": "utility",
+    "webhookUrl": "https://funtes.netlify.app/api/webhook",
+    "subtitle": "Token Price Prediction Game",
+    "description": "Guess which trending token will perform best! A fun game using real crypto data.",
+    "primaryCategory": "games",
     "tags": [
       "fun",
-      "test",
-      "demo"
+      "game",
+      "crypto",
+      "tokens",
+      "prediction"
     ],
-    "heroImageUrl": "https://tesfun.netlify.app/og.png",
-    "tagline": "A fun test app",
-    "ogTitle": "Fun Tes",
-    "ogDescription": "A fun test app",
-    "ogImageUrl": "https://tesfun.netlify.app/og.png"
+    "heroImageUrl": "https://funtes.netlify.app/og.png",
+    "tagline": "Token Price Prediction Game",
+    "ogTitle": "Fun Tes - Token Game",
+    "ogDescription": "Guess which trending token will perform best! A fun game using real crypto data.",
+    "ogImageUrl": "https://funtes.netlify.app/og.png"
   }
 }
