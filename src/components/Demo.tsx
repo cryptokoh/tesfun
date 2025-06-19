@@ -59,12 +59,30 @@ export default function Demo(
   const [sendNotificationResult, setSendNotificationResult] = useState("");
   const [copied, setCopied] = useState(false);
   const [neynarUser, setNeynarUser] = useState<NeynarUser | null>(null);
+  const [isReady, setIsReady] = useState(false);
 
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
   const hasSolanaProvider = useHasSolanaProvider();
   const solanaWallet = useSolanaWallet();
   const { publicKey: solanaPublicKey } = solanaWallet;
+
+  // Call sdk.actions.ready() when the app is ready to dismiss splash screen
+  useEffect(() => {
+    const callReady = async () => {
+      if (isSDKLoaded && !isReady) {
+        try {
+          await sdk.actions.ready();
+          setIsReady(true);
+          console.log("✅ Splash screen dismissed - app is ready");
+        } catch (error) {
+          console.error("Error calling sdk.actions.ready():", error);
+        }
+      }
+    };
+
+    callReady();
+  }, [isSDKLoaded, isReady]);
 
   useEffect(() => {
     console.log("isSDKLoaded", isSDKLoaded);

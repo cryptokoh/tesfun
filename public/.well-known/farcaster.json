@@ -10,7 +10,7 @@
     "splashBackgroundColor": "#f7f7f7",
     "webhookUrl": "https://tesfun.netlify.app/api/webhook",
     "subtitle": "A fun test app",
-    "description": "A fun test app for Farcaster mini apps",
+    "description": "A fun test app",
     "primaryCategory": "utility",
     "tags": [
       "fun",
@@ -20,7 +20,7 @@
     "heroImageUrl": "https://tesfun.netlify.app/og.png",
     "tagline": "A fun test app",
     "ogTitle": "Fun Tes",
-    "ogDescription": "A fun test app for Farcaster mini apps",
+    "ogDescription": "A fun test app",
     "ogImageUrl": "https://tesfun.netlify.app/og.png"
   }
-} 
+}
