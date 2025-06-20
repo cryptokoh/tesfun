@@ -139,9 +139,9 @@ export default function ShibaRaftGame() {
         let newScore = prev.score;
         let newFludEarned = prev.fludEarned;
         let newLives = prev.lives;
-        let newPlatforms = [...prev.tokenPlatforms];
+        let updatedPlatforms = [...prev.tokenPlatforms];
 
-        for (const platform of newPlatforms) {
+        for (const platform of updatedPlatforms) {
           if (!platform.collected && 
               newX >= platform.x && 
               newX <= platform.x + platform.width &&
@@ -160,7 +160,7 @@ export default function ShibaRaftGame() {
               ...prev,
               score: newScore,
               fludEarned: newFludEarned,
-              tokenPlatforms: newPlatforms,
+              tokenPlatforms: updatedPlatforms,
               shibaPosition: { x: newX, y: platform.y - 20 },
               shibaVelocity: { x: prev.shibaVelocity.x, y: bounceVelocityY }
             };
@@ -183,14 +183,14 @@ export default function ShibaRaftGame() {
         }
 
         // Move platforms to the left (create scrolling effect)
-        const newPlatforms = prev.tokenPlatforms.map(platform => ({
+        updatedPlatforms = prev.tokenPlatforms.map(platform => ({
           ...platform,
           x: platform.x - prev.gameSpeed
         })).filter(platform => platform.x > -100);
 
         // Add new platforms if needed
-        if (newPlatforms.length < 3) {
-          const lastPlatform = newPlatforms[newPlatforms.length - 1];
+        if (updatedPlatforms.length < 3) {
+          const lastPlatform = updatedPlatforms[updatedPlatforms.length - 1];
           const newPlatform = {
             id: Date.now(),
             x: lastPlatform ? lastPlatform.x + 200 + Math.random() * 100 : 800,
@@ -199,14 +199,14 @@ export default function ShibaRaftGame() {
             token: prev.tokens[Math.floor(Math.random() * prev.tokens.length)],
             collected: false
           };
-          newPlatforms.push(newPlatform);
+          updatedPlatforms.push(newPlatform);
         }
 
         return {
           ...prev,
           shibaPosition: { x: newX, y: newY },
           shibaVelocity: { x: prev.shibaVelocity.x, y: onPlatform ? 0 : newVelocityY },
-          tokenPlatforms: newPlatforms
+          tokenPlatforms: updatedPlatforms
         };
       });
 

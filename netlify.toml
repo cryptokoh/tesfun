@@ -1,12 +1,11 @@
 [build]
   base = "."
-  command = "npm install --legacy-peer-deps && node scripts/netlify-build.js"
+  command = "npm run build"
   publish = "out"
 
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  NPM_FLAGS = "--legacy-peer-deps"
 
 [[redirects]]
   from = "/*"

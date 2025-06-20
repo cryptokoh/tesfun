@@ -17,10 +17,10 @@ import {
   useSwitchChain,
   useChainId,
 } from "wagmi";
-import {
-  useConnection as useSolanaConnection,
-  useWallet as useSolanaWallet,
-} from '@solana/wallet-adapter-react';
+// import {
+//   useConnection as useSolanaConnection,
+//   useWallet as useSolanaWallet,
+// } from '@solana/wallet-adapter-react';
 import { useHasSolanaProvider } from "./providers/SafeFarcasterSolanaProvider";
 import { ShareButton } from "./ui/Share";
 
@@ -64,8 +64,8 @@ export default function Demo(
   const { address, isConnected } = useAccount();
   const chainId = useChainId();
   const hasSolanaProvider = useHasSolanaProvider();
-  const solanaWallet = useSolanaWallet();
-  const { publicKey: solanaPublicKey } = solanaWallet;
+  // const solanaWallet = useSolanaWallet();
+  // const { publicKey: solanaPublicKey } = solanaWallet;
 
   // Call sdk.actions.ready() when the app is ready to dismiss splash screen
   useEffect(() => {
@@ -460,83 +460,82 @@ function SignSolanaMessage({ signMessage }: { signMessage?: (message: Uint8Array
   );
 }
 
-function SendSolana() {
-  const [state, setState] = useState<
-    | { status: 'none' }
-    | { status: 'pending' }
-    | { status: 'error'; error: Error }
-    | { status: 'success'; signature: string }
-  >({ status: 'none' });
+// function SendSolana() {
+//   const [state, setState] = useState<{
+//     status: 'none' | 'pending' | 'success' | 'error';
+//     signature?: string;
+//     error?: Error;
+//   }>({ status: 'none' });
 
-  const { connection: solanaConnection } = useSolanaConnection();
-  const { sendTransaction, publicKey } = useSolanaWallet();
+//   // const { connection: solanaConnection } = useSolanaConnection();
+//   // const { sendTransaction, publicKey } = solanaWallet;
 
-  // This should be replaced but including it from the original demo
-  // https://github.com/farcasterxyz/frames-v2-demo/blob/main/src/components/Demo.tsx#L718
-  const ashoatsPhantomSolanaWallet = 'Ao3gLNZAsbrmnusWVqQCPMrcqNi6jdYgu8T6NCoXXQu1';
+//   // This should be replaced but including it from the original demo
+//   // https://github.com/farcasterxyz/frames-v2-demo/blob/main/src/components/Demo.tsx#L718
+//   const ashoatsPhantomSolanaWallet = '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM';
 
-  const handleSend = useCallback(async () => {
-    setState({ status: 'pending' });
-    try {
-      if (!publicKey) {
-        throw new Error('no Solana publicKey');
-      }
+//   const handleSend = useCallback(async () => {
+//     setState({ status: 'pending' });
+//     try {
+//       // if (!publicKey) {
+//       //   throw new Error('no Solana publicKey');
+//       // }
 
-      const { blockhash } = await solanaConnection.getLatestBlockhash();
-      if (!blockhash) {
-        throw new Error('failed to fetch latest Solana blockhash');
-      }
+//       const { blockhash } = await solanaConnection.getLatestBlockhash();
+//       if (!blockhash) {
+//         throw new Error('failed to fetch latest Solana blockhash');
+//       }
 
-      const fromPubkeyStr = publicKey.toBase58();
-      const toPubkeyStr = ashoatsPhantomSolanaWallet;
-      const transaction = new Transaction();
-      transaction.add(
-        SystemProgram.transfer({
-          fromPubkey: new PublicKey(fromPubkeyStr),
-          toPubkey: new PublicKey(toPubkeyStr),
-          lamports: 0n,
-        }),
-      );
-      transaction.recentBlockhash = blockhash;
-      transaction.feePayer = new PublicKey(fromPubkeyStr);
+//       const fromPubkeyStr = publicKey.toBase58();
+//       const toPubkeyStr = ashoatsPhantomSolanaWallet;
+//       const transaction = new Transaction();
+//       transaction.add(
+//         SystemProgram.transfer({
+//           fromPubkey: new PublicKey(fromPubkeyStr),
+//           toPubkey: new PublicKey(toPubkeyStr),
+//           lamports: 0n,
+//         }),
+//       );
+//       transaction.recentBlockhash = blockhash;
+//       transaction.feePayer = new PublicKey(fromPubkeyStr);
 
-      const simulation = await solanaConnection.simulateTransaction(transaction);
-      if (simulation.value.err) {
-        // Gather logs and error details for debugging
-        const logs = simulation.value.logs?.join('\n') ?? 'No logs';
-        const errDetail = JSON.stringify(simulation.value.err);
-        throw new Error(`Simulation failed: ${errDetail}\nLogs:\n${logs}`);
-      }
-      const signature = await sendTransaction(transaction, solanaConnection);
-      setState({ status: 'success', signature });
-    } catch (e) {
-      if (e instanceof Error) {
-        setState({ status: 'error', error: e });
-      } else {
-        setState({ status: 'none' });
-      }
-    }
-  }, [sendTransaction, publicKey, solanaConnection]);
+//       const simulation = await solanaConnection.simulateTransaction(transaction);
+//       if (simulation.value.err) {
+//         // Gather logs and error details for debugging
+//         const logs = simulation.value.logs?.join('\n') ?? 'No logs';
+//         const errDetail = JSON.stringify(simulation.value.err);
+//         throw new Error(`Simulation failed: ${errDetail}\nLogs:\n${logs}`);
+//       }
+//       const signature = await sendTransaction(transaction, solanaConnection);
+//       setState({ status: 'success', signature });
+//     } catch (e) {
+//       if (e instanceof Error) {
+//         setState({ status: 'error', error: e });
+//       } else {
+//         setState({ status: 'none' });
+//       }
+//     }
+//   }, [sendTransaction, publicKey, solanaConnection]);
 
-  return (
-    <>
-      <Button
-        onClick={handleSend}
-        disabled={state.status === 'pending'}
-        isLoading={state.status === 'pending'}
-        className="mb-4"
-      >
-        Send Transaction (sol)
-      </Button>
-      {state.status === 'error' && renderError(state.error)}
-      {state.status === 'success' && (
-        <div className="mt-2 text-xs">
-          <div>Hash: {truncateAddress(state.signature)}</div>
-        </div>
-      )}
-    </>
-  );
-}
+//   return (
+//     <>
+//       <Button
+//         onClick={handleSend}
+//         disabled={state.status === 'pending'}
+//         isLoading={state.status === 'pending'}
+//         className="mb-4"
+//       >
+//         Send Transaction (sol)
+//       </Button>
+//       {state.status === 'error' && renderError(state.error)}
+//       {state.status === 'success' && (
+//         <div className="mt-2 text-xs">
+//           <div>Hash: {truncateAddress(state.signature)}</div>
+//         </div>
+//       )}
+//     </>
+//   );
+// }
 
 function SignEvmMessage() {
   const { isConnected } = useAccount();
