@@ -15,7 +15,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {  
-  const session = await getSession()
+  let session = null;
+  try {
+    session = await getSession();
+  } catch (error) {
+    console.warn('Failed to get session:', error);
+    // Continue without session
+  }
 
   return (
     <html lang="en">
