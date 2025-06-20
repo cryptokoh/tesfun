@@ -476,7 +476,7 @@ export default function ShibaGame() {
               newFludEarned += Math.floor(Math.random() * 50 + 10) * newMultiplier;
               
               // Increase multiplier
-              newMultiplier = Math.min(5, newMultiplier + 0.5);
+              newMultiplier = Math.min(33, newMultiplier + 0.5);
               newButtonSizzle = true;
               
               // Add burst effect
