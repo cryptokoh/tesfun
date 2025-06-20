@@ -39,7 +39,7 @@
     "@pigment-css/react": "^0.0.30",
     "hls.js": "^1.5.20",
     "@farcaster/mini-app-solana": ">=0.0.1 <1.0.0",
-    "@solana/wallet-adapter-react": "^0.29.0",
+    "@solana/wallet-adapter-react": "^0.15.38",
     "next": "^15",
     "next-auth": "^4.24.11",
     "react": "^18.3.1",
