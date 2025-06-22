@@ -142,6 +142,12 @@ async function main() {
       // Write updated .env file
       fs.writeFileSync(envPath, envContent);
       console.log('\n✅ Environment variables updated');
+
+      // Also output a static farcaster.json manifest
+      const manifestPath = path.join(projectRoot, 'public', '.well-known', 'farcaster.json');
+      fs.mkdirSync(path.dirname(manifestPath), { recursive: true });
+      fs.writeFileSync(manifestPath, JSON.stringify(metadata, null, 2));
+      console.log('✅ Manifest written to', manifestPath);
     }
 
     // Run next build
